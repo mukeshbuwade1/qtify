@@ -1,0 +1,9 @@
+.tabs {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.statusMessage {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}

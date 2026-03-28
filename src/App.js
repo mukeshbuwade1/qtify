@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import AlbumsSection from './components/Section/AlbumsSection';
+import SongsSection from './components/Section/SongsSection';
 import { fetchNewAlbums, fetchTopAlbums } from './api/albums';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         loadAlbums={fetchNewAlbums}
         initialShowGrid={false}
       />
+      <SongsSection />
     </div>
   );
 }

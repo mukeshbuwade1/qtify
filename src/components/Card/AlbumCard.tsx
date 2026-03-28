@@ -1,13 +1,17 @@
 import React from "react";
 import Chip from "@mui/material/Chip";
 import type { Album } from "../../types/album";
+import type { Song } from "../../types/song";
 import styles from "./AlbumCard.module.css";
 
 export type AlbumCardProps = {
   title: string;
-  follows: number;
   image: string;
   imageAlt?: string;
+  /** Album listings — chip shows “Follows”. */
+  follows?: number;
+  /** Song listings — chip shows “Likes” and bar centers the chip (Songs section). */
+  likes?: number;
 };
 
 export function albumToCardProps(album: Album): AlbumCardProps {
@@ -19,6 +23,15 @@ export function albumToCardProps(album: Album): AlbumCardProps {
   };
 }
 
+export function songToCardProps(song: Song): AlbumCardProps {
+  return {
+    title: song.title,
+    likes: song.likes,
+    image: song.image,
+    imageAlt: `${song.title} artwork`,
+  };
+}
+
 const defaultDummy: AlbumCardProps = {
   title: "New English Songs",
   follows: 13279,
@@ -27,16 +40,23 @@ const defaultDummy: AlbumCardProps = {
   imageAlt: "Album cover",
 };
 
-function formatFollows(n: number): string {
-  return `${n.toLocaleString()} Follows`;
+function chipLabelForProps(props: Partial<AlbumCardProps>): string {
+  const useLikes = props.likes !== undefined;
+  const merged = { ...defaultDummy, ...props };
+  const value = useLikes ? Number(merged.likes) : Number(merged.follows ?? 0);
+  return useLikes
+    ? `${value.toLocaleString()} Likes`
+    : `${value.toLocaleString()} Follows`;
 }
 
 /**
- * Album card: cover art (~80%), white strip with follows chip (~20%), title below.
- * Pass props from API (`Album`) when wiring data.
+ * Shared card surface for albums (Follows) and songs (Likes).
  */
 export default function AlbumCard(props: Partial<AlbumCardProps>) {
-  const { title, follows, image, imageAlt } = { ...defaultDummy, ...props };
+  const merged = { ...defaultDummy, ...props };
+  const { title, image, imageAlt } = merged;
+  const useLikes = props.likes !== undefined;
+  const chipLabel = chipLabelForProps(props);
 
   return (
     <article className={styles.root}>
@@ -49,9 +69,15 @@ export default function AlbumCard(props: Partial<AlbumCardProps>) {
             loading="lazy"
           />
         </div>
-        <div className={styles.infoBar}>
+        <div
+          className={
+            useLikes
+              ? `${styles.infoBar} ${styles.infoBarCentered}`
+              : styles.infoBar
+          }
+        >
           <Chip
-            label={formatFollows(follows)}
+            label={chipLabel}
             size="small"
             sx={{
               backgroundColor: "var(--color-black)",
