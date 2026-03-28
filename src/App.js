@@ -10,7 +10,11 @@ function App() {
     <div className="App">
       <Navbar />
       <Hero />
-      <AlbumsSection title="Top Albums" loadAlbums={fetchTopAlbums} initialShowGrid />
+      <AlbumsSection
+        title="Top Albums"
+        loadAlbums={fetchTopAlbums}
+        initialShowGrid={false}
+      />
       <AlbumsSection
         title="New Albums"
         loadAlbums={fetchNewAlbums}
