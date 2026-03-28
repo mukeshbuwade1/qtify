@@ -1,0 +1,14 @@
+/**
+ * Keep hex values in sync with `theme.ts` → `colors`.
+ */
+:root {
+  --color-primary: #34c94b;
+  --color-black: #121212;
+  --color-white: #ffffff;
+  --color-surface: #121212;
+  --color-interactive-hover: #4a8df6;
+  --color-interactive-pressed: #2977f5;
+  --color-search-border: #121212;
+  --color-placeholder: #6c6c6c;
+  --navbar-height: 74px;
+}

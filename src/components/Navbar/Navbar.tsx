@@ -12,15 +12,15 @@ type NavbarProps = {
 
 function Navbar({ searchData }: NavbarProps) {
   return (
-    <nav className={styles.navbar}>
-      <Link to="/">
+    <nav className={styles.navbar} data-testid="navbar">
+      <Link className={styles.logoLink} to="/">
         <Logo />
       </Link>
       <Search
-        placeholder="Search a song of your choice"
+        placeholder="Search a album of your choice"
         searchData={searchData}
       />
-      <Feedback/>
+      <Feedback />
     </nav>
   );
 }

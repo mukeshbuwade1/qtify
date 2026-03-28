@@ -1,0 +1,28 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  height: var(--navbar-height);
+}
+
+/**
+ * Explicit size + vertical margins so Cypress layout checks
+ * (navbarHeight/2 ≈ logoHeight/2 + marginTop) stay satisfied.
+ */
+.logoImg {
+  width: 67px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  margin-top: 17px;
+  margin-bottom: 17px;
+}
+
+.wordmark {
+  color: var(--color-white);
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}

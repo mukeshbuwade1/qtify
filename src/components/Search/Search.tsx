@@ -17,7 +17,7 @@ export type SearchProps = {
   placeholder: string;
 };
 
-const Listbox = styled("ul")(({ theme }) => ({
+const Listbox = styled("ul")(() => ({
   width: "100%",
   margin: 0,
   padding: 0,
@@ -36,13 +36,13 @@ const Listbox = styled("ul")(({ theme }) => ({
   backgroundColor: "var(--color-black)",
   overflow: "auto",
   "& li.Mui-focused": {
-    backgroundColor: "#4a8df6",
-    color: "white",
+    backgroundColor: "var(--color-interactive-hover)",
+    color: "var(--color-white)",
     cursor: "pointer",
   },
   "& li:active": {
-    backgroundColor: "#2977f5",
-    color: "white",
+    backgroundColor: "var(--color-interactive-pressed)",
+    color: "var(--color-white)",
   },
 }));
 

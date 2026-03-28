@@ -1,10 +1,10 @@
 import React from "react";
-import  "./Feedback.module.css";
+import styles from "./Feedback.module.css";
 
 function Feedback() {
   return (
-    <button className="feedback-button">
-      <span className="button-text">Feedback</span>
+    <button type="button" className={styles.feedbackButton}>
+      Give Feedback
     </button>
   );
 }
